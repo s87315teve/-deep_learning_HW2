@@ -71,7 +71,7 @@ preencoder的部分則是把input size改成768
 改完後再到asr.sh中把模型換成train_asr_conformer7_wavlm_large.yaml
 * step 7: 開始訓練
 ```
-run.sh -feats_normalize uttmvn
+./run.sh -feats_normalize uttmvn
 ```
 
 
