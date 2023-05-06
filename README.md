@@ -77,11 +77,13 @@ preencoder的部分則是把input size改成768
 
 
 ---
-## 調參數與model結果
+## 結果與討論
 
 在本次kaggle競賽中，嘗試了以下參數來訓練模型
 | case | 模型 | 參數 | train:dev | epoch |score|
 | --- | --- | --- | --- | --- | --- |
 | case1 | conformer7_wavlm_large| lr: 0.0025 <br>batch_bins: 1000000 | 2919 : 200 | 35 |**latest** 12.49514|
 | case2 | conformer7_wavlm_large| lr: 0.0015 <br>batch_bins: 1000000 | 2919 : 200 | 80 |**latest** 11.28155|
-| case3 | conformer7_wavlm_large| lr: 0.0015 <br>batch_bins: 1500000 | 4990 : 1248 | 80 |**latest** 8.02912<br>**best** 7348543<br>**10best** <font color="red">5.80582</font>
+| case3 | conformer7_wavlm_large| lr: 0.0015 <br>batch_bins: 1500000 | 4990 : 1248 | 80 |**latest** 8.02912<br>**best** 7.348543<br>**10best** <font color="red">5.80582</font>
+
+case1和case2都是尚未進行資料增強的case，能看到無論lr和epoch怎麼調，最後的分數都會在10分以上，而經過資料增強後能看到精準度有顯著的上升，最後表現最好的是訓練過程中前10名的模型中進行平均後所組成的新模型，推測可能原因是因為將各模型平均後的泛化能力較強，在面對沒看過的資料時表現可以比較穩定
